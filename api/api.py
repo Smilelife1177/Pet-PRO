@@ -1,10 +1,14 @@
 from pprint import pprint
 from pybit.unified_trading import HTTP
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 session = HTTP(
     testnet=False,
-    api_key="ehEP3TXvZX2HYa8cUg",
-    api_secret="zqaxoEWwmcp4ywo325K51zyXWv9beYi7vf0n",
+    api_key=os.getenv("BYBIT_API_KEY"),
+    api_secret=os.getenv("BYBIT_API_SECRET"),
 )
 res = (session.get_wallet_balance(
     accountType="UNIFIED",
@@ -12,3 +16,4 @@ res = (session.get_wallet_balance(
 ))
 
 pprint(res)
+#Unified Trading acc
